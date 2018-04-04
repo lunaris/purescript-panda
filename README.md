@@ -13,15 +13,12 @@ $ npx bower i
 $ npx pulp build
 ```
 
-To run tests:
+To build and serve test content (e.g. using `python3`'s `http.server`):
 
 ```
 $ npx pulp build --include test -m Test.Main --to test/dist.js
+$ python3 -m http.server 4949
 ```
-
-For a full example, see the `examples` directory. I'll try to add more
-documentation in the coming days, but this is very much alpha software right
-now.
 
 [Module
 documentation](https://pursuit.purescript.org/packages/purescript-panda/) is
