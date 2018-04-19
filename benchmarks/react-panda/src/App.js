@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      rows: sortBy(comparingName, props.rows)
+    };
+  }
+
   render() {
     return (
       <section>
@@ -16,7 +23,7 @@ class App extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.props.rows.map(r =>
+            {this.state.rows.map(r =>
               <tr>
                 <td>{r.name}</td>
                 <td>{r.age}</td>
@@ -29,6 +36,16 @@ class App extends Component {
       </section>
     );
   }
+}
+
+function sortBy(f, xs) {
+  var ys = [].concat(xs);
+  ys.sort(f);
+  return ys;
+}
+
+function comparingName(a, b) {
+  return a.name < b.name ? -1 : (a.name > b.name ? 1 : 0);
 }
 
 export default App;
