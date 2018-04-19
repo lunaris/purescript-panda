@@ -42,11 +42,19 @@ async function getFirstMeaningfulPaint (page, url) {
   );
 }
 
-(async () => {
+async function testURL(name, url) {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
-  console.log(await getFirstMeaningfulPaint(page, 'http://localhost:4949'));
+  console.log(name);
+  console.log(await getFirstMeaningfulPaint(page, url));
 
-  await browser.close();
+  await page.screenshot({ path: 'screenshot-' + name + '.png' });
+
+  return browser.close();
+}
+
+(async () => {
+  await testURL('React', 'http://localhost:5000');
+  await testURL('Panda', 'http://localhost:4949');
 })();

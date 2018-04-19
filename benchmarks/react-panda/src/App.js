@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import queens from './queens.json';
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {rows: queens};
-  }
-
   render() {
     return (
       <section>
@@ -22,7 +16,7 @@ class App extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.rows.map(r =>
+            {this.props.rows.map(r =>
               <tr>
                 <td>{r.name}</td>
                 <td>{r.age}</td>
